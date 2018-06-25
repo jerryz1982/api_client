@@ -154,3 +154,66 @@ POST_USAGE = """
     }
 }
 """
+
+REGISTER_LICENSE = """
+{
+    "path": "/RegAPIDev/FCWS_RegistrationService.svc/REST/REST_RegisterLicense",
+    "method": "POST",
+    "body": {
+        {% if version is defined %}
+            "Version": "{{ version }}",
+        {% else %}
+            "Version": "1",
+        {% endif %}
+        "Token" : "{{ token }}",
+        {% if serial_number is defined %}
+        "Serial_Number": "{{ serial_number }}",
+        {% endif %}
+        {% if contact_number is defined %}
+        "Contract_Number": "{{ contact_number }}",
+        {% endif %}
+        {% if is_government is defined %}
+        "Is_Government": "{{ is_government }}",
+        {% endif %}
+        {% if description is defined %}
+        "Description": "{{ description }}",
+        {% endif %}
+        {% if additional_info is defined %}
+        "Additional_Info": "{{ additional_info }}",
+        {% endif %}
+        "License_Registration_Code": "{{ license_code }}"
+    }
+}
+"""
+
+DOWNLOAD_LICENSE = """
+{
+    "path": "/RegAPIDev/FCWS_RegistrationService.svc/REST/REST_DownloadLicense",
+    "method": "POST",
+    "body": {
+        {% if version is defined %}
+            "Version": "{{ version }}",
+        {% else %}
+            "Version": "1",
+        {% endif %}
+        "Token" : "{{ token }}",
+        "Serial_Number": "{{ serial_number }}"
+    }
+}
+"""
+
+GET_ASSETDETAILS = """
+{
+    "path": "/RegAPIDev/FCWS_RegistrationService.svc/REST/REST_GETAssetDetails",
+    "method": "POST",
+    "body": {
+        {% if version is defined %}
+            "Version": "{{ version }}",
+        {% else %}
+            "Version": "1",
+        {% endif %}
+        "Token" : "{{ token }}",
+        "Serial_Number": "{{ serial_number }}"
+    }
+}
+"""
